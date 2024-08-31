@@ -83,7 +83,7 @@ body {
   border: 5px solid #654a2a;
   border-radius: 10px;
   width: 85%;
-  min-width: 90rem;
+  min-width: 110rem;
   height: 100%;
   min-height: 20rem;
   text-align: center;
@@ -96,6 +96,7 @@ body {
 .columns-container .todo-column {
   display: flex;
   flex-direction: column;
+  min-width: 35rem;
 }
 .columns-container .todo-column .state-title {
   background-color: #853232;
@@ -103,7 +104,7 @@ body {
   color: #353b3c;
   text-shadow: 3px 3px 0 #fff, -3px 3px 0 #fff, -3px -3px 0 #fff, 3px -3px 0 #fff;
 }
-.columns-container .todo-column .state-content {
+.columns-container .todo-column .state-content-todo {
   background-color: #cf8181;
   height: 100%;
   font-size: 3rem;
@@ -111,6 +112,7 @@ body {
 .columns-container .in-progress-column {
   display: flex;
   flex-direction: column;
+  min-width: 35rem;
 }
 .columns-container .in-progress-column .state-title {
   background-color: #ffd166;
@@ -118,7 +120,7 @@ body {
   color: #353b3c;
   text-shadow: 3px 3px 0 #fff, -3px 3px 0 #fff, -3px -3px 0 #fff, 3px -3px 0 #fff;
 }
-.columns-container .in-progress-column .state-content {
+.columns-container .in-progress-column .state-content-inprogress {
   background-color: #ffe8b3;
   height: 100%;
   font-size: 3rem;
@@ -126,6 +128,7 @@ body {
 .columns-container .done-column {
   display: flex;
   flex-direction: column;
+  min-width: 35rem;
 }
 .columns-container .done-column .state-title {
   background-color: #c9e3a0;
@@ -133,7 +136,7 @@ body {
   color: #353b3c;
   text-shadow: 3px 3px 0 #fff, -3px 3px 0 #fff, -3px -3px 0 #fff, 3px -3px 0 #fff;
 }
-.columns-container .done-column .state-content {
+.columns-container .done-column .state-content-done {
   background-color: #e6f2d3;
   height: 100%;
   font-size: 3rem;
@@ -282,6 +285,63 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(101, 74, 42, 0.8);
+}
+
+.card-container {
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-family: "Concert One";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #654a2a;
+  border-radius: 10px;
+  background-color: #fff;
+  width: auto;
+  man-width: 30rem;
+}
+.card-container .card-title {
+  text-transform: uppercase;
+  letter-spacing: 2;
+  padding: 0.8rem;
+}
+.card-container .card-description {
+  margin-bottom: 1rem;
+}
+.card-container .card-timestamp {
+  margin-bottom: 0.8rem;
+}
+.card-container .card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.card-container .card-footer select {
+  border: 3px solid #654a2a;
+  border-radius: 5px;
+  height: 3rem;
+  width: 10rem;
+  font-family: "Concert One";
+  color: #353b3c;
+}
+.card-container .card-footer .delete-btn {
+  border: 3px solid #654a2a;
+  border-radius: 5px;
+  height: 3rem;
+  width: 10rem;
+  font-family: "Concert One";
+  color: #fff;
+  background-color: #672727;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.card-container .card-footer .delete-btn:hover {
+  background-color: #853232;
+}
+.card-container .card-footer .delete-btn:active {
+  transform: translateY(2px);
 }
 
 @keyframes moveInLeft {

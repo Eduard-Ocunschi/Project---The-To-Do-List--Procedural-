@@ -1,18 +1,33 @@
-const openModalBtn = document.querySelector(".add-btn");
+"use strict";
+
 const contentContainer = document.querySelector(".content-container");
+//Buttons
+const openModalBtn = document.querySelector(".add-btn");
+const cancelModal = document.querySelector(".modal-btn-cancel");
+const saveBtnModal = document.querySelector(".modal-btn-save");
+//Modal
 const modalContainer = document.querySelector(".modal-container");
 const modalOverlay = document.querySelector(".modal-overlay");
+// Form Inputs
+const formTitle = document.querySelector(".inp-title");
+const formTextarea = document.querySelector(".inp-textarea");
+// Status Column
+const todoColumn = document.querySelector(".state-content-todo");
+const inProgressColumn = document.querySelector(".state-content-inprogress");
+const doneColumn = document.querySelector(".state-content-done");
 
-const cancelModal = document.querySelector(".modal-btn-cancel");
+let tasksList = [];
+const taskStates = ["To Do", "In Progress", "Done"];
 
 window.onload = () => {
-  // FUNCTIONALITY
+  // ----->   FUNCTIONALITY OPEN/CLOSE MODAL <-----
   const openModalFunction = function () {
     setTimeout(() => {
       modalContainer.classList.remove("hidden");
       modalContainer.classList.add("animationModal-moveIn");
       modalOverlay.classList.remove("hidden");
       modalOverlay.classList.add("animation-bgIn");
+
       // contentContainer.classList.add("opacity");
       // contentContainer.classList.remove("animation-moveIn");
     }, 100);
@@ -80,4 +95,125 @@ window.onload = () => {
   //     }, 601);
   //   }, 180);
   // });
+
+  // ----->   CREATING THE TASK <-----
+
+  // Create Date Function
+
+  const formatNewDate = () => {
+    const now = new Date();
+    const monthDay = now.getDate();
+    const month = now.getMonth() + 1;
+    const year = now.getFullYear();
+    const hour = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    return `${monthDay < 10 ? "0" + monthDay : monthDay}-${
+      month < 10 ? "0" + month : month
+    }-${year} ${hour < 10 ? "0" + hour : hour}:${
+      minutes < 10 ? "0" + minutes : minutes
+    }:${seconds < 10 ? "0" + seconds : seconds}`;
+  };
+
+  // Redefining the Task List based on new imput
+  const setTasksList = (list) => {
+    tasksList = list;
+    renderTasks();
+  };
+
+  // Form Data Colecting Function
+  const getTaskDataFromForm = () => {
+    const taskObj = {
+      id: Date.now(),
+      title: formTitle.value,
+      description: formTextarea.value,
+      timestamp: formatNewDate(),
+      status: taskStates[0],
+    };
+    return taskObj;
+  };
+
+  saveBtnModal.addEventListener("click", closeModalFunction);
+  saveBtnModal.addEventListener("click", () => {
+    const task = getTaskDataFromForm();
+    const newList = [...tasksList, task];
+    setTasksList(newList);
+    console.log(taskList);
+    // closeModalFunction();
+  });
+
+  // Building the Task Card
+  const buildCard = (taskObj) => {
+    const container = document.createElement("div");
+    container.className = "card-container";
+    const title = document.createElement("h3");
+    title.className = "card-title";
+    title.innerText = taskObj.title;
+    const description = document.createElement("p");
+    description.className = "card-description";
+    description.innerText = taskObj.description;
+    const timeStamp = document.createElement("span");
+    timeStamp.className = "card-timestamp";
+    timeStamp.innerText = taskObj.timestamp;
+
+    const cardFooter = document.createElement("div");
+    cardFooter.className = "card-footer";
+
+    const statusDropDown = document.createElement("select");
+    statusDropDown.addEventListener("change", (e) => {
+      taskObj.status = e.target.value;
+      setTasksList(tasksList);
+    });
+    const defaultOption = document.createElement("option");
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    defaultOption.innerText = "Select Status";
+    statusDropDown.append(defaultOption);
+    taskStates.forEach((status) => {
+      const option = document.createElement("option");
+      option.value = status;
+      option.innerText = status;
+      statusDropDown.append(option);
+    });
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "delete-btn";
+    deleteBtn.innerText = "Delete";
+    deleteBtn.addEventListener("click", () => {
+      const newList = tasksList.filter((task) => {
+        return taskObj.id !== task.id;
+      });
+      setTasksList(newList);
+    });
+
+    cardFooter.append(statusDropDown, deleteBtn);
+    container.append(title, description, timeStamp, cardFooter);
+    return container;
+  };
+
+  const renderTasks = () => {
+    todoColumn.innerHTML = "";
+    inProgressColumn.innerHTML = "";
+    doneColumn.innerHTML = "";
+
+    tasksList.forEach((task) => {
+      const card = buildCard(task);
+      switch (task.status) {
+        case taskStates[0]:
+          todoColumn.append(card);
+          break;
+        case taskStates[1]:
+          inProgressColumn.append(card);
+          break;
+        case taskStates[2]:
+          doneColumn.append(card);
+          break;
+      }
+    });
+  };
+
+  //
+  // window function body
+  //
+  //
 };

@@ -36,15 +36,15 @@
         <div class="columns-container">
           <div class="column todo-column">
             <div class="state-title">To Do</div>
-            <div class="state-content"></div>
+            <div class="state-content-todo"></div>
           </div>
           <div class="column in-progress-column">
             <div class="state-title">In Progress</div>
-            <div class="state-content"></div>
+            <div class="state-content-inprogress"></div>
           </div>
           <div class="column done-column">
             <div class="state-title">Done</div>
-            <div class="state-content"></div>
+            <div class="state-content-done"></div>
           </div>
         </div>
       </section>
@@ -53,11 +53,18 @@
         <h3 class="modal-title">Create new Task</h3>
         <form class="modal-form" action="">
           <div class="field-holder">
-            <input type="text" id="input-title" name="task-title" required />
+            <input
+              class="inp-title"
+              type="text"
+              id="input-title"
+              name="task-title"
+              required
+            />
             <label class="input-label-title" for="input-title">Title</label>
           </div>
           <div class="field-holder">
             <textarea
+              class="inp-textarea"
               id="input-textarea"
               name="task-description"
               rows="5"

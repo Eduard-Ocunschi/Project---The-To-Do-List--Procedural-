@@ -15,6 +15,7 @@ body {
 }
 
 .main {
+  position: relative;
   width: 100%;
   height: auto;
   min-height: 100vh;
@@ -88,6 +89,7 @@ body {
   border-radius: 500px;
   box-shadow: $shadow-big;
   transition: all 0.2s;
+  outline: none;
 }
 
 .btn:hover {
@@ -182,154 +184,169 @@ body {
   }
 }
 
-.modal-overlay {
+// .modal-overlay {
+//   position: fixed;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   background-color: $color-primary;
+//   justify-content: center;
+//   align-items: center;
+//   display: flex;
+//   // display: none;
+// }
+
+.modal-container {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba($color-primary, 0.8);
-  justify-content: center;
-  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   display: flex;
-  // display: none;
+  flex-direction: column;
+  border: 3px solid $color-primary;
+  border-radius: 10px;
+  align-items: center;
+  padding: 2rem;
+  width: 50%;
+  min-width: 42.5rem;
+  height: 60%;
+  min-height: 47rem;
+  background-color: $color-secondary;
+  box-shadow: $shadow-small;
+  z-index: 10;
 
-  .modal-container {
+  // animation-name: moveInBottom;
+  // animation-duration: 1s;
+  // animation-timing-function: ease-out;
+
+  .modal-title {
+    font-size: $fs-medium-small;
+    font-family: $main-font-family;
+    color: $color-text;
+  }
+
+  .modal-form {
     display: flex;
+    width: 90%;
+    height: 90%;
     flex-direction: column;
-    border: 3px solid rgba($color-primary, 0.8);
-    border-radius: 10px;
+    justify-content: space-around;
     align-items: center;
-    padding: 2rem;
-    width: 50%;
-    min-width: 42.5rem;
-    height: 60%;
-    min-height: 47rem;
-    background-color: rgba($color-secondary, 0.8);
-    box-shadow: $shadow-small;
 
-    // animation-name: moveInBottom;
-    // animation-duration: 1s;
-    // animation-timing-function: ease-out;
-
-    .modal-title {
-      font-size: $fs-medium-small;
-      font-family: $main-font-family;
-      color: $color-text;
-    }
-
-    .modal-form {
+    .field-holder {
       display: flex;
-      width: 90%;
-      height: 90%;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-
-      .field-holder {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        margin-top: 4rem;
-      }
-
-      .input-label-title,
-      .input-label-text {
-        width: 80%;
-        position: absolute;
-        top: 0rem;
-        left: 0rem;
-        font-size: $fs-small-small;
-        font-family: $main-font-family;
-        color: rgba($color-text, 0.6);
-        height: 4rem;
-        cursor: text;
-        display: flex;
-        align-items: center;
-        padding-left: 1rem;
-        transition: all 0.3s;
-      }
-
-      input {
-        height: 4rem;
-        width: 100%;
-        border-radius: 10px;
-        font-size: $fs-small-small;
-        font-family: $main-font-family;
-        background-color: $color-white;
-        border: 2px solid $color-primary;
-        padding: 0 0.9rem;
-        outline: none;
-      }
-
-      textarea {
-        width: 100%;
-        border: 2px solid $color-primary;
-        border-radius: 10px;
-        font-size: $fs-small-small;
-        font-family: $main-font-family;
-        background-color: $color-white;
-        padding: 0.7rem 0.9rem;
-        outline: none;
-      }
-
-      input:focus + .input-label-title,
-      input:valid + .input-label-title {
-        font-size: 1.7rem;
-        top: -32px;
-        pointer-events: none;
-      }
-
-      textarea:focus + .input-label-text,
-      textarea:valid + .input-label-text {
-        font-size: 1.7rem;
-        top: -32px;
-        pointer-events: none;
-      }
-    }
-
-    .modal-footer {
+      justify-content: center;
       width: 100%;
+      height: 100%;
+      position: relative;
+      margin-top: 4rem;
+    }
+
+    .input-label-title,
+    .input-label-text {
+      width: 80%;
+      position: absolute;
+      top: 0rem;
+      left: 0rem;
+      font-size: $fs-small-small;
+      font-family: $main-font-family;
+      color: rgba($color-text, 0.6);
+      height: 4rem;
+      cursor: text;
       display: flex;
-      justify-content: space-around;
-      padding: 5rem 0 0 0;
+      align-items: center;
+      padding-left: 1rem;
+      transition: all 0.3s;
+    }
 
-      .modal-btn-cancel {
-        min-width: 12rem;
-        padding: 1rem 3rem;
-        background-color: $state-todo;
-        color: $color-white;
-        border: 2px solid $color-primary;
-        box-shadow: $shadow-small;
-        font-size: $fs-small-small;
-      }
-      .modal-btn-save {
-        min-width: 12rem;
-        padding: 1rem 3rem;
-        background-color: $state-done;
-        color: $color-text;
-        border: 2px solid $color-primary;
-        box-shadow: $shadow-small;
-        font-size: $fs-small-small;
-      }
+    input {
+      height: 4rem;
+      width: 100%;
+      border-radius: 10px;
+      font-size: $fs-small-small;
+      font-family: $main-font-family;
+      background-color: $color-white;
+      border: 2px solid $color-primary;
+      padding: 0 0.9rem;
+      outline: none;
+    }
 
-      .modal-btn-cancel:hover {
-        background-color: lighten($state-todo, 5%);
-      }
-      .modal-btn-save:hover {
-        background-color: lighten($state-done, 10%);
-      }
+    textarea {
+      width: 100%;
+      border: 2px solid $color-primary;
+      border-radius: 10px;
+      font-size: $fs-small-small;
+      font-family: $main-font-family;
+      background-color: $color-white;
+      padding: 0.7rem 0.9rem;
+      outline: none;
+    }
 
-      .modal-btn-cancel:active {
-        transform: translateY(0.5rem);
-        box-shadow: $shadow-small-active;
-      }
-      .modal-btn-save:active {
-        transform: translateY(0.5rem);
-        box-shadow: $shadow-small-active;
-      }
+    input:focus + .input-label-title,
+    input:valid + .input-label-title {
+      font-size: 1.7rem;
+      top: -32px;
+      pointer-events: none;
+    }
+
+    textarea:focus + .input-label-text,
+    textarea:valid + .input-label-text {
+      font-size: 1.7rem;
+      top: -32px;
+      pointer-events: none;
     }
   }
+
+  .modal-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 5rem 0 0 0;
+
+    .modal-btn-cancel {
+      min-width: 12rem;
+      padding: 1rem 3rem;
+      background-color: $state-todo;
+      color: $color-white;
+      border: 3px solid $color-primary;
+      box-shadow: $shadow-small;
+      font-size: $fs-small-small;
+    }
+    .modal-btn-save {
+      min-width: 12rem;
+      padding: 1rem 3rem;
+      background-color: $state-done;
+      color: $color-text;
+      border: 3px solid $color-primary;
+      box-shadow: $shadow-small;
+      font-size: $fs-small-small;
+    }
+
+    .modal-btn-cancel:hover {
+      background-color: lighten($state-todo, 5%);
+    }
+    .modal-btn-save:hover {
+      background-color: lighten($state-done, 10%);
+    }
+
+    .modal-btn-cancel:active {
+      transform: translateY(0.5rem);
+      box-shadow: $shadow-small-active;
+    }
+    .modal-btn-save:active {
+      transform: translateY(0.5rem);
+      box-shadow: $shadow-small-active;
+    }
+  }
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color-primary, 0.8);
 }

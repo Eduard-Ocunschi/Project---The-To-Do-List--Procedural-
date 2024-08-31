@@ -48,32 +48,32 @@
           </div>
         </div>
       </section>
-      <section class="modal modal-overlay">
-        <div class="modal-container">
-          <h3 class="modal-title">Create new Task</h3>
-          <form class="modal-form" action="">
-            <div class="field-holder">
-              <input type="text" id="input-title" name="task-title" required />
-              <label class="input-label-title" for="input-title">Title</label>
-            </div>
-            <div class="field-holder">
-              <textarea
-                id="input-textarea"
-                name="task-description"
-                rows="5"
-                required
-              ></textarea>
-              <label class="input-label-text" for="input-textarea"
-                >Write a short description...</label
-              >
-            </div>
-          </form>
-          <div class="modal-footer">
-            <button class="btn modal-btn-cancel">Cancel</button>
-            <button class="btn modal-btn-save">Save</button>
+
+      <section class="modal-container hidden">
+        <h3 class="modal-title">Create new Task</h3>
+        <form class="modal-form" action="">
+          <div class="field-holder">
+            <input type="text" id="input-title" name="task-title" required />
+            <label class="input-label-title" for="input-title">Title</label>
           </div>
+          <div class="field-holder">
+            <textarea
+              id="input-textarea"
+              name="task-description"
+              rows="5"
+              required
+            ></textarea>
+            <label class="input-label-text" for="input-textarea"
+              >Write a short description...</label
+            >
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn modal-btn-cancel">Cancel</button>
+          <button class="btn modal-btn-save">Save</button>
         </div>
       </section>
+      <div class="modal-overlay hidden"></div>
     </main>
   </body>
 </html>

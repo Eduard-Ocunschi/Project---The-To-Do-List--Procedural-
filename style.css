@@ -72,7 +72,7 @@ body {
 }
 
 .btn:active {
-  transform: translateY(0.5rem);
+  transform: translateY(0.4rem);
   box-shadow: 1px 7px 35px -3px rgba(0, 0, 0, 0.59);
 }
 
@@ -164,14 +164,13 @@ body {
   align-items: center;
   padding: 2rem;
   width: 50%;
-  min-width: 35rem;
+  min-width: 42.5rem;
   height: 60%;
-  min-height: 45rem;
+  min-height: 47rem;
   background-color: rgba(225, 206, 183, 0.8);
   box-shadow: 2px 6px 25px -3px rgba(0, 0, 0, 0.59);
 }
 .modal-overlay .modal-container .modal-title {
-  padding: 2rem;
   font-size: 4.5rem;
   font-family: "Concert One";
   color: #353b3c;
@@ -184,29 +183,68 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+.modal-overlay .modal-container .modal-form .field-holder {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: 4rem;
+}
+.modal-overlay .modal-container .modal-form .input-label-title,
+.modal-overlay .modal-container .modal-form .input-label-text {
+  width: 80%;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  font-size: 2rem;
+  font-family: "Concert One";
+  color: rgba(53, 59, 60, 0.6);
+  height: 4rem;
+  cursor: text;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  transition: all 0.3s;
+}
 .modal-overlay .modal-container .modal-form input {
   height: 4rem;
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
-  padding: 2rem;
   font-size: 2rem;
   font-family: "Concert One";
   background-color: #fff;
   border: 2px solid #654a2a;
+  padding: 0 0.9rem;
+  outline: none;
 }
 .modal-overlay .modal-container .modal-form textarea {
-  width: 80%;
+  width: 100%;
   border: 2px solid #654a2a;
   border-radius: 10px;
-  padding: 2rem;
   font-size: 2rem;
   font-family: "Concert One";
   background-color: #fff;
+  padding: 0.7rem 0.9rem;
+  outline: none;
+}
+.modal-overlay .modal-container .modal-form input:focus + .input-label-title,
+.modal-overlay .modal-container .modal-form input:valid + .input-label-title {
+  font-size: 1.7rem;
+  top: -32px;
+  pointer-events: none;
+}
+.modal-overlay .modal-container .modal-form textarea:focus + .input-label-text,
+.modal-overlay .modal-container .modal-form textarea:valid + .input-label-text {
+  font-size: 1.7rem;
+  top: -32px;
+  pointer-events: none;
 }
 .modal-overlay .modal-container .modal-footer {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  padding: 5rem 0 0 0;
 }
 .modal-overlay .modal-container .modal-footer .modal-btn-cancel {
   min-width: 12rem;
@@ -285,7 +323,7 @@ body {
 }
 .animationModal-moveIn {
   animation-name: moveInBottomModal;
-  animation-duration: 1s;
+  animation-duration: 0.6s;
   animation-timing-function: ease-out;
 }
 
@@ -315,7 +353,7 @@ body {
 }
 .animation-bgIn {
   animation-name: backgroundIn;
-  animation-duration: 1s;
+  animation-duration: 0.6s;
   animation-timing-function: ease-out;
 }
 

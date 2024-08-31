@@ -95,7 +95,7 @@ body {
 }
 
 .btn:active {
-  transform: translateY(0.5rem);
+  transform: translateY(0.4rem);
   box-shadow: $shadow-big-active;
 }
 
@@ -202,9 +202,9 @@ body {
     align-items: center;
     padding: 2rem;
     width: 50%;
-    min-width: 35rem;
+    min-width: 42.5rem;
     height: 60%;
-    min-height: 45rem;
+    min-height: 47rem;
     background-color: rgba($color-secondary, 0.8);
     box-shadow: $shadow-small;
 
@@ -213,7 +213,6 @@ body {
     // animation-timing-function: ease-out;
 
     .modal-title {
-      padding: 2rem;
       font-size: $fs-medium-small;
       font-family: $main-font-family;
       color: $color-text;
@@ -227,25 +226,67 @@ body {
       justify-content: space-around;
       align-items: center;
 
+      .field-holder {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        margin-top: 4rem;
+      }
+
+      .input-label-title,
+      .input-label-text {
+        width: 80%;
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+        font-size: $fs-small-small;
+        font-family: $main-font-family;
+        color: rgba($color-text, 0.6);
+        height: 4rem;
+        cursor: text;
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+        transition: all 0.3s;
+      }
+
       input {
         height: 4rem;
-        width: 80%;
+        width: 100%;
         border-radius: 10px;
-        padding: 2rem;
         font-size: $fs-small-small;
         font-family: $main-font-family;
         background-color: $color-white;
         border: 2px solid $color-primary;
+        padding: 0 0.9rem;
+        outline: none;
       }
 
       textarea {
-        width: 80%;
+        width: 100%;
         border: 2px solid $color-primary;
         border-radius: 10px;
-        padding: 2rem;
         font-size: $fs-small-small;
         font-family: $main-font-family;
         background-color: $color-white;
+        padding: 0.7rem 0.9rem;
+        outline: none;
+      }
+
+      input:focus + .input-label-title,
+      input:valid + .input-label-title {
+        font-size: 1.7rem;
+        top: -32px;
+        pointer-events: none;
+      }
+
+      textarea:focus + .input-label-text,
+      textarea:valid + .input-label-text {
+        font-size: 1.7rem;
+        top: -32px;
+        pointer-events: none;
       }
     }
 
@@ -253,6 +294,7 @@ body {
       width: 100%;
       display: flex;
       justify-content: space-around;
+      padding: 5rem 0 0 0;
 
       .modal-btn-cancel {
         min-width: 12rem;

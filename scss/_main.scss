@@ -1,0 +1,293 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+      117deg,
+      rgba($color-primary, 0.8) 0%,
+      rgba($color-secondary, 0.8) 100%
+    ),
+    url(../img/bg-img-1.jpg);
+
+  // background: linear-gradient(
+  //     117deg,
+  //     rgba(164, 216, 244, 0.8) 0%,
+  //     rgba(18, 101, 145, 0.8) 100%
+  //   ),
+  //   url(../img/bg-img-2.jpg);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.title {
+  font-size: $fs-big;
+  font-family: $main-font-family;
+  font-weight: 400;
+  color: $color-text;
+  margin-top: $mg-medium;
+  margin-bottom: $mg-big;
+
+  text-shadow: 3px 3px 0 $color-white, -3px 3px 0 $color-white,
+    -3px -3px 0 $color-white, 3px -3px 0 $color-white;
+
+  // animation-name: moveInLeft;
+  // animation-duration: 2s;
+  // animation-timing-function: ease-out;
+}
+
+.content-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // animation-name: moveInBottom;
+  // animation-duration: 2s;
+  // animation-timing-function: ease-out;
+}
+
+.btn-container {
+  width: 85%;
+}
+.add-btn {
+  font-size: $fs-small-big;
+  padding: 2rem 4rem;
+  margin-bottom: $mg-medium;
+  display: fixed;
+  left: 400px;
+  cursor: pointer;
+  color: $color-text;
+  border: 3px solid $color-primary;
+}
+
+.btn {
+  font-family: $main-font-family;
+
+  font-weight: 400;
+  border-radius: 500px;
+  box-shadow: $shadow-big;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background-color: $color-white;
+}
+
+.btn:active {
+  transform: translateY(0.5rem);
+  box-shadow: $shadow-big-active;
+}
+
+.columns-container {
+  display: flex;
+  border: 5px solid $color-primary;
+  border-radius: 10px;
+
+  width: 85%;
+  min-width: 90rem;
+  height: 100%;
+  min-height: 20rem;
+  text-align: center;
+  font-family: $main-font-family;
+  box-shadow: $shadow-small;
+
+  .column {
+    flex-grow: 1;
+  }
+
+  .todo-column {
+    display: flex;
+    flex-direction: column;
+
+    .state-title {
+      background-color: $state-todo;
+      font-size: $fs-medium-small;
+      color: $color-text;
+      text-shadow: 3px 3px 0 $color-white, -3px 3px 0 $color-white,
+        -3px -3px 0 $color-white, 3px -3px 0 $color-white;
+    }
+    .state-content {
+      background-color: lighten($state-todo, 30%);
+      height: 100%;
+      font-size: $fs-small-big;
+    }
+  }
+
+  .in-progress-column {
+    display: flex;
+    flex-direction: column;
+
+    .state-title {
+      background-color: $state-in-progress;
+      font-size: $fs-medium-small;
+      color: $color-text;
+      text-shadow: 3px 3px 0 $color-white, -3px 3px 0 $color-white,
+        -3px -3px 0 $color-white, 3px -3px 0 $color-white;
+    }
+    .state-content {
+      background-color: lighten($state-in-progress, 15%);
+      height: 100%;
+      font-size: $fs-small-big;
+    }
+  }
+
+  .done-column {
+    display: flex;
+    flex-direction: column;
+
+    .state-title {
+      background-color: $state-done;
+      font-size: $fs-medium-small;
+      color: $color-text;
+      text-shadow: 3px 3px 0 $color-white, -3px 3px 0 $color-white,
+        -3px -3px 0 $color-white, 3px -3px 0 $color-white;
+    }
+
+    .state-content {
+      background-color: lighten($state-done, 13%);
+      height: 100%;
+      font-size: $fs-small-big;
+    }
+  }
+
+  .todo-column,
+  .in-progress-column {
+    border-right: 5px solid $color-primary;
+  }
+
+  .state-title {
+    border-bottom: 5px solid $color-primary;
+    padding: 2rem;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($color-primary, 0.8);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  // display: none;
+
+  .modal-container {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgba($color-primary, 0.8);
+    border-radius: 10px;
+    align-items: center;
+    padding: 2rem;
+    width: 50%;
+    min-width: 35rem;
+    height: 60%;
+    min-height: 45rem;
+    background-color: rgba($color-secondary, 0.8);
+    box-shadow: $shadow-small;
+
+    // animation-name: moveInBottom;
+    // animation-duration: 1s;
+    // animation-timing-function: ease-out;
+
+    .modal-title {
+      padding: 2rem;
+      font-size: $fs-medium-small;
+      font-family: $main-font-family;
+      color: $color-text;
+    }
+
+    .modal-form {
+      display: flex;
+      width: 90%;
+      height: 90%;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      input {
+        height: 4rem;
+        width: 80%;
+        border-radius: 10px;
+        padding: 2rem;
+        font-size: $fs-small-small;
+        font-family: $main-font-family;
+        background-color: $color-white;
+        border: 2px solid $color-primary;
+      }
+
+      textarea {
+        width: 80%;
+        border: 2px solid $color-primary;
+        border-radius: 10px;
+        padding: 2rem;
+        font-size: $fs-small-small;
+        font-family: $main-font-family;
+        background-color: $color-white;
+      }
+    }
+
+    .modal-footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+
+      .modal-btn-cancel {
+        min-width: 12rem;
+        padding: 1rem 3rem;
+        background-color: $state-todo;
+        color: $color-white;
+        border: 2px solid $color-primary;
+        box-shadow: $shadow-small;
+        font-size: $fs-small-small;
+      }
+      .modal-btn-save {
+        min-width: 12rem;
+        padding: 1rem 3rem;
+        background-color: $state-done;
+        color: $color-text;
+        border: 2px solid $color-primary;
+        box-shadow: $shadow-small;
+        font-size: $fs-small-small;
+      }
+
+      .modal-btn-cancel:hover {
+        background-color: lighten($state-todo, 5%);
+      }
+      .modal-btn-save:hover {
+        background-color: lighten($state-done, 10%);
+      }
+
+      .modal-btn-cancel:active {
+        transform: translateY(0.5rem);
+        box-shadow: $shadow-small-active;
+      }
+      .modal-btn-save:active {
+        transform: translateY(0.5rem);
+        box-shadow: $shadow-small-active;
+      }
+    }
+  }
+}

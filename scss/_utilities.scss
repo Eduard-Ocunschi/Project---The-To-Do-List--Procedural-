@@ -1,0 +1,121 @@
+// Title Animation
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-15rem);
+  }
+
+  // 80% {
+  //   transform: translateX(2rem);
+  // }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.animation-title {
+  animation-name: moveInLeft;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+}
+
+// Moveing In from Bottom Content
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(6rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.animation-moveIn {
+  animation-name: moveInBottom;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+}
+
+// Moveing In Modal Body
+@keyframes moveInBottomModal {
+  0% {
+    opacity: 0;
+    transform: translateY(6rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.animationModal-moveIn {
+  animation-name: moveInBottomModal;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+// Moving Out from initial position
+@keyframes moveOutBottom {
+  0% {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(6rem);
+  }
+}
+
+.animation-moveOut {
+  animation-name: moveOutBottom;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+}
+
+// Modal Overlay blurr animation In
+@keyframes backgroundIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animation-bgIn {
+  animation-name: backgroundIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+//Modal Overlay blurr animation out
+@keyframes backgroundOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.animation-bgOut {
+  animation-name: backgroundOut;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+}
+
+//Helper
+.opacity {
+  opacity: 1;
+}
+.hidden {
+  display: none;
+}

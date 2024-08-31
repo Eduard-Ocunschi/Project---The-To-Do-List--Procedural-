@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+
+    <!-- Fonts -->
+    <!-- Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Concert One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Links -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- JS -->
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <main class="main">
+      <h1 class="title animation-title">The To Do List</h1>
+      <section class="content-container animation-moveIn">
+        <div class="btn-container">
+          <button class="btn add-btn">Add task</button>
+        </div>
+        <div class="columns-container">
+          <div class="column todo-column">
+            <div class="state-title">To Do</div>
+            <div class="state-content"></div>
+          </div>
+          <div class="column in-progress-column">
+            <div class="state-title">In Progress</div>
+            <div class="state-content"></div>
+          </div>
+          <div class="column done-column">
+            <div class="state-title">Done</div>
+            <div class="state-content"></div>
+          </div>
+        </div>
+      </section>
+      <section class="modal modal-overlay hidden">
+        <div class="modal-container">
+          <h3 class="modal-title">Create new Task</h3>
+          <form class="modal-form" action="">
+            <input type="text" name="task-title" placeholder="Title" />
+            <textarea
+              name="task-description"
+              placeholder="Write a short description..."
+              rows="5"
+            ></textarea>
+          </form>
+          <div class="modal-footer">
+            <button class="btn modal-btn-cancel">Cancel</button>
+            <button class="btn modal-btn-save">Save</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

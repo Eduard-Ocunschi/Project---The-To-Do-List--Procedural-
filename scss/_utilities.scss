@@ -21,7 +21,7 @@
   animation-timing-function: ease-out;
 }
 
-// Moveing In from Bottom Content
+// Moveing In from Bottom Button + To Do List
 @keyframes moveInBottom {
   0% {
     opacity: 0;
@@ -59,7 +59,7 @@
   animation-timing-function: ease-out;
 }
 
-// Moving Out from initial position
+// Moving Out Modal Body
 @keyframes moveOutBottom {
   0% {
     opacity: 1;
@@ -78,7 +78,7 @@
   animation-timing-function: ease-out;
 }
 
-// Modal Overlay blurr animation In
+// Modal Overlay Blurr Animation In
 @keyframes backgroundIn {
   0% {
     opacity: 0;
@@ -95,7 +95,7 @@
   animation-timing-function: ease-out;
 }
 
-//Modal Overlay blurr animation out
+//Modal Overlay Blurr Animation Out
 @keyframes backgroundOut {
   0% {
     opacity: 1;
@@ -112,10 +112,7 @@
   animation-timing-function: ease-out;
 }
 
-//Helper
-.opacity {
-  opacity: 1;
-}
+//Helper Classes
 .hidden {
   display: none;
 }

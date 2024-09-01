@@ -1,6 +1,5 @@
 "use strict";
 
-const contentContainer = document.querySelector(".content-container");
 //Buttons
 const openModalBtn = document.querySelector(".add-btn");
 const cancelModal = document.querySelector(".modal-btn-cancel");
@@ -16,7 +15,9 @@ const todoColumn = document.querySelector(".state-content-todo");
 const inProgressColumn = document.querySelector(".state-content-inprogress");
 const doneColumn = document.querySelector(".state-content-done");
 
+// TASK LISTS
 let tasksList = [];
+// TASK STATES
 const taskStates = ["To Do", "In Progress", "Done"];
 
 window.onload = () => {
@@ -27,9 +28,6 @@ window.onload = () => {
       modalContainer.classList.add("animationModal-moveIn");
       modalOverlay.classList.remove("hidden");
       modalOverlay.classList.add("animation-bgIn");
-
-      // contentContainer.classList.add("opacity");
-      // contentContainer.classList.remove("animation-moveIn");
     }, 100);
   };
 
@@ -42,10 +40,6 @@ window.onload = () => {
         modalContainer.classList.add("hidden");
         modalOverlay.classList.add("hidden");
       }, 601);
-      //test
-      // addEventListener("animationend", () => {
-      //   modal.classList.add("hidden");
-      // });
 
       setTimeout(() => {
         modalContainer.classList.remove("animation-moveOut");
@@ -56,17 +50,6 @@ window.onload = () => {
   // Open Modal
   openModalBtn.addEventListener("click", openModalFunction);
 
-  // openModalBtn.addEventListener("click", () => {
-  //   setTimeout(() => {
-  //     modalContainer.classList.remove("hidden");
-  //     modalContainer.classList.add("animationModal-moveIn");
-  //     modalOverlay.classList.remove("hidden");
-  //     modalOverlay.classList.add("animation-bgIn");
-  //     contentContainer.classList.add("opacity");
-  //     contentContainer.classList.remove("animation-moveIn");
-  //   }, 100);
-  // });
-
   // Close Modal
   cancelModal.addEventListener("click", closeModalFunction);
   modalOverlay.addEventListener("click", closeModalFunction);
@@ -75,31 +58,10 @@ window.onload = () => {
       closeModalFunction();
     }
   });
-  // cancelModal.addEventListener("click", () => {
-  //   setTimeout(() => {
-  //     modalContainer.classList.remove("animationModal-moveIn");
-  //     modalContainer.classList.add("animation-moveOut");
-  //     modalOverlay.classList.add("animation-bgOut");
-  //     setTimeout(() => {
-  //       modalContainer.classList.add("hidden");
-  //       modalOverlay.classList.add("hidden");
-  //     }, 601);
-  //     //test
-  //     // addEventListener("animationend", () => {
-  //     //   modal.classList.add("hidden");
-  //     // });
-
-  //     setTimeout(() => {
-  //       modalContainer.classList.remove("animation-moveOut");
-  //       modalOverlay.classList.remove("animation-bgOut");
-  //     }, 601);
-  //   }, 180);
-  // });
 
   // ----->   CREATING THE TASK <-----
 
-  // Create Date Function
-
+  // Date Generating Function
   const formatNewDate = () => {
     const now = new Date();
     const monthDay = now.getDate();
@@ -115,7 +77,7 @@ window.onload = () => {
     }:${seconds < 10 ? "0" + seconds : seconds}`;
   };
 
-  // Redefining the Task List based on new imput
+  // Redefining the Task List Based On New Imput
   const setTasksList = (list) => {
     tasksList = list;
     renderTasks();
@@ -133,16 +95,16 @@ window.onload = () => {
     return taskObj;
   };
 
+  // MODAL SAVE BUTTON
   saveBtnModal.addEventListener("click", closeModalFunction);
   saveBtnModal.addEventListener("click", () => {
     const task = getTaskDataFromForm();
     const newList = [...tasksList, task];
     setTasksList(newList);
     console.log(taskList);
-    // closeModalFunction();
   });
 
-  // Building the Task Card
+  // BUILDING THE TASK CARD
   const buildCard = (taskObj) => {
     const container = document.createElement("div");
     container.className = "card-container";
@@ -191,6 +153,7 @@ window.onload = () => {
     return container;
   };
 
+  //RENDER TASKS
   const renderTasks = () => {
     todoColumn.innerHTML = "";
     inProgressColumn.innerHTML = "";
@@ -211,9 +174,4 @@ window.onload = () => {
       }
     });
   };
-
-  //
-  // window function body
-  //
-  //
 };

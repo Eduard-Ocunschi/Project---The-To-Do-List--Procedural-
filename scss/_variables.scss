@@ -25,13 +25,14 @@ $fs-small-big: 3rem;
 $fs-small-small: 2rem;
 
 // Spaceing
-$mg-big: 10rem;
-$mg-medium: 8rem;
-$mg-small: 6rem;
+$mg-big: 8rem;
+$mg-medium-big: 6rem;
+$mg-medium-small: 4rem;
+$mg-small: 2rem;
 
 //Box Shadow
 
-$shadow-big: 1px 12px 35px -3px rgba(0, 0, 0, 0.59);
-$shadow-big-active: 1px 7px 35px -3px rgba(0, 0, 0, 0.59);
-$shadow-small: 2px 6px 25px -3px rgba(0, 0, 0, 0.59);
-$shadow-small-active: 1px 3px 20px -3px rgba(0, 0, 0, 0.59);
+$shadow-big: 1px 10px 15px 0px rgba(0, 0, 0, 0.59);
+$shadow-big-active: 0px 8px 10px 0px rgba(0, 0, 0, 0.59);
+$shadow-small: 0px 4px 10px 0px rgba(0, 0, 0, 0.59);
+$shadow-small-active: 0px 2.5px 8px 0px rgba(0, 0, 0, 0.59);

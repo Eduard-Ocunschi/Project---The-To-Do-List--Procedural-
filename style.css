@@ -10,8 +10,35 @@ html {
   font-size: 62.5%;
 }
 
+@media all and (max-width: 1120px) {
+  html {
+    font-size: 50%;
+  }
+}
 body {
   box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #e1ceb7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #896439;
+  border-radius: 50rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9b7240;
+}
+
+::-webkit-scrollbar-corner {
+  background: #e1ceb7;
 }
 
 .main {
@@ -36,12 +63,19 @@ body {
   text-shadow: 3px 3px 0 #fff, -3px 3px 0 #fff, -3px -3px 0 #fff, 3px -3px 0 #fff;
 }
 
+@media all and (max-width: 900px) {
+  .title {
+    margin: 2rem 4rem;
+    text-align: center;
+  }
+}
 .content-container {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 5rem;
 }
 
 .btn-container {
@@ -73,7 +107,7 @@ body {
 }
 
 .btn:active {
-  transform: translateY(0.4rem);
+  transform: translateY(0.3rem);
   box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.59);
 }
 
@@ -81,20 +115,21 @@ body {
   display: flex;
   border: 5px solid #654a2a;
   border-radius: 10px;
-  width: 85%;
+  width: 90%;
   min-width: 110rem;
-  min-height: 40rem;
+  min-height: 30rem;
   text-align: center;
   font-family: "Concert One";
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.59);
 }
 .columns-container .column {
-  flex-grow: 1;
+  flex: 1;
 }
 .columns-container .todo-column {
   display: flex;
   flex-direction: column;
   min-width: 35rem;
+  border-right: 5px solid #654a2a;
 }
 .columns-container .todo-column .state-title {
   background-color: #853232;
@@ -107,6 +142,11 @@ body {
   background-color: #cf8181;
   height: 100%;
   font-size: 3rem;
+}
+@media all and (max-width: 900px) {
+  .columns-container .todo-column {
+    background-color: #cf8181;
+  }
 }
 .columns-container .in-progress-column {
   display: flex;
@@ -125,10 +165,16 @@ body {
   height: 100%;
   font-size: 3rem;
 }
+@media all and (max-width: 900px) {
+  .columns-container .in-progress-column {
+    background-color: #ffe8b3;
+  }
+}
 .columns-container .done-column {
   display: flex;
   flex-direction: column;
   min-width: 35rem;
+  border-left: 5px solid #654a2a;
 }
 .columns-container .done-column .state-title {
   background-color: #c9e3a0;
@@ -142,15 +188,38 @@ body {
   height: 100%;
   font-size: 3rem;
 }
-.columns-container .todo-column,
-.columns-container .in-progress-column {
-  border-right: 5px solid #654a2a;
+@media all and (max-width: 900px) {
+  .columns-container .done-column {
+    background-color: #e6f2d3;
+  }
 }
 .columns-container .state-title {
   border-bottom: 5px solid #654a2a;
   padding: 2rem;
 }
+@media all and (max-width: 900px) {
+  .columns-container .done-column {
+    border-left: none;
+  }
+  .columns-container .in-progress-column {
+    border-bottom: 3px solid #654a2a;
+  }
+  .columns-container .todo-column {
+    border: none;
+    border-bottom: 3px solid #654a2a;
+  }
+  .columns-container .state-title {
+    border-bottom: 3px solid #654a2a;
+  }
+}
 
+@media all and (max-width: 900px) {
+  .columns-container {
+    flex-direction: column;
+    min-width: 40rem;
+    min-height: 90rem;
+  }
+}
 .modal-container {
   position: fixed;
   top: 50%;
@@ -163,7 +232,7 @@ body {
   align-items: center;
   padding: 2rem;
   width: 50%;
-  min-width: 42.5rem;
+  min-width: 38rem;
   height: 60%;
   min-height: 50rem;
   background-color: #e1ceb7;
@@ -228,6 +297,10 @@ body {
   margin-bottom: 2rem;
   padding: 0.7rem 0.9rem;
   outline: none;
+  resize: none;
+}
+.modal-container .modal-form textarea::-webkit-scrollbar-track {
+  background: #fff;
 }
 .modal-container .modal-form input:focus + .input-label-title,
 .modal-container .modal-form input:valid + .input-label-title {
@@ -247,9 +320,10 @@ body {
   justify-content: space-around;
   padding: 5rem;
   margin-bottom: 2rem;
+  gap: 2rem;
 }
 .modal-container .modal-footer .modal-btn-cancel {
-  min-width: 12rem;
+  min-width: 10rem;
   padding: 1rem 3rem;
   background-color: #853232;
   color: #fff;
@@ -258,7 +332,7 @@ body {
   font-size: 2rem;
 }
 .modal-container .modal-footer .modal-btn-save {
-  min-width: 12rem;
+  min-width: 10rem;
   padding: 1rem 3rem;
   background-color: #c9e3a0;
   color: #353b3c;
@@ -280,6 +354,12 @@ body {
   transform: translateY(0.5rem);
   box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.59);
 }
+@media all and (max-width: 900px) {
+  .modal-container .modal-footer .modal-btn-cancel,
+  .modal-container .modal-footer .modal-btn-save {
+    font-size: 1.6rem;
+  }
+}
 
 .modal-overlay {
   position: absolute;
@@ -298,12 +378,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   border: 5px solid #654a2a;
   border-radius: 10px;
   background-color: #fff;
-  width: auto;
-  man-width: 30rem;
+  flex: content;
 }
 .card-container .card-title {
   text-transform: uppercase;
@@ -325,7 +403,7 @@ body {
   border: 3px solid #654a2a;
   border-radius: 10px;
   height: 3rem;
-  width: 10rem;
+  width: 11.5rem;
   font-family: "Concert One";
   color: #353b3c;
 }
@@ -333,7 +411,7 @@ body {
   border: 3px solid #654a2a;
   border-radius: 10px;
   height: 3rem;
-  width: 10rem;
+  width: 11.5rem;
   font-family: "Concert One";
   color: #fff;
   background-color: #672727;
@@ -347,6 +425,14 @@ body {
 .card-container .card-footer .delete-btn:active {
   transform: translateY(2px);
   box-shadow: 0px 2.5px 8px 0px rgba(0, 0, 0, 0.59);
+}
+@media all and (max-width: 900px) {
+  .card-container .card-footer select,
+  .card-container .card-footer .delete-btn {
+    font-size: 1rem;
+    border: 2px solid #654a2a;
+    width: 9rem;
+  }
 }
 
 @keyframes moveInLeft {

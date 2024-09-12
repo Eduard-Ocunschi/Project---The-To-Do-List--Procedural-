@@ -111,7 +111,7 @@ window.onload = () => {
     const title = document.createElement("h3");
     title.className = "card-title";
     title.innerText = taskObj.title;
-    const description = document.createElement("p");
+    const description = document.createElement("span");
     description.className = "card-description";
     description.innerText = taskObj.description;
     const timeStamp = document.createElement("span");

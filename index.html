@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ToDo List</title>
+    <title>The To Do List</title>
 
     <!-- Fonts -->
     <!-- Rubik -->
@@ -61,6 +61,7 @@
               type="text"
               id="input-title"
               name="task-title"
+              maxlength="40"
               required
             />
             <label class="input-label-title" for="input-title">Title</label>
@@ -85,6 +86,11 @@
       </section>
       <!-- THE MODAL OVERYLAY -->
       <div class="modal-overlay hidden"></div>
+
+      <!-- THE DINAMICALY CREATED CARD MODAL -->
+      <div class="dinamic-card-modal"></div>
+      <!-- THE MODAL OVERYLAY -->
+      <div class="card-modal-overlay hidden"></div>
     </main>
   </body>
 </html>

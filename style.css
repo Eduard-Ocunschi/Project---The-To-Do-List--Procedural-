@@ -141,6 +141,7 @@ body {
 .columns-container .todo-column .state-content-todo {
   background-color: #cf8181;
   height: 100%;
+  min-height: 55rem;
   font-size: 3rem;
 }
 @media all and (max-width: 900px) {
@@ -164,6 +165,7 @@ body {
   background-color: #ffe8b3;
   height: 100%;
   font-size: 3rem;
+  min-height: 55rem;
 }
 @media all and (max-width: 900px) {
   .columns-container .in-progress-column {
@@ -187,6 +189,7 @@ body {
   background-color: #e6f2d3;
   height: 100%;
   font-size: 3rem;
+  min-height: 55rem;
 }
 @media all and (max-width: 900px) {
   .columns-container .done-column {
@@ -330,6 +333,7 @@ body {
   border: 5px solid #654a2a;
   box-shadow: 1px 10px 15px 0px rgba(0, 0, 0, 0.59);
   font-size: 2rem;
+  cursor: pointer;
 }
 .modal-container .modal-footer .modal-btn-save {
   min-width: 10rem;
@@ -339,6 +343,7 @@ body {
   border: 5px solid #654a2a;
   box-shadow: 1px 10px 15px 0px rgba(0, 0, 0, 0.59);
   font-size: 2rem;
+  cursor: pointer;
 }
 .modal-container .modal-footer .modal-btn-cancel:hover {
   background-color: #983939;
@@ -370,9 +375,19 @@ body {
   background-color: rgba(101, 74, 42, 0.8);
 }
 
+.card-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(101, 74, 42, 0.8);
+}
+
 .card-container {
   margin: 1rem;
   padding: 1rem;
+  max-height: 25rem;
   font-size: 1.6rem;
   font-family: "Concert One";
   display: flex;
@@ -389,7 +404,11 @@ body {
   padding: 0.8rem;
 }
 .card-container .card-description {
-  margin-bottom: 1rem;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 10rem;
+  max-height: 11.5rem;
 }
 .card-container .card-timestamp {
   margin-bottom: 0.8rem;
@@ -433,6 +452,67 @@ body {
     border: 2px solid #654a2a;
     width: 9rem;
   }
+}
+
+.card-modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  border: 5px solid #654a2a;
+  border-radius: 10px;
+  align-items: center;
+  padding: 2rem;
+  width: 70%;
+  min-width: 38rem;
+  height: 60%;
+  min-height: 50rem;
+  background-color: #e1ceb7;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.59);
+  z-index: 10;
+  font-family: "Concert One";
+  text-align: center;
+}
+.card-modal-container .card-modal-title {
+  font-size: 4.5rem;
+  font-family: "Concert One";
+  color: #353b3c;
+  margin-bottom: 2rem;
+}
+.card-modal-container .card-modal-description {
+  width: 90%;
+  height: 80%;
+  border: 5px solid #654a2a;
+  border-radius: 10px;
+  font-size: 2rem;
+  font-family: "Concert One";
+  background-color: #fff;
+  margin-bottom: 2rem;
+  outline: none;
+  resize: none;
+  overflow: scroll;
+}
+.card-modal-container .card-modal-description::-webkit-scrollbar-track {
+  background: #fff;
+}
+.card-modal-container .card-modal-description::-webkit-scrollbar-corner {
+  background: #fff;
+}
+.card-modal-container .card-modal-timestamp {
+  font-size: 3rem;
+  margin-bottom: 0.8rem;
+}
+.card-modal-container .card-modal-btn {
+  min-width: 10rem;
+  padding: 1rem 3rem;
+  background-color: #853232;
+  color: #fff;
+  border: 5px solid #654a2a;
+  box-shadow: 1px 10px 15px 0px rgba(0, 0, 0, 0.59);
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 @keyframes moveInLeft {
@@ -495,7 +575,7 @@ body {
 }
 .animation-moveOut {
   animation-name: moveOutBottom;
-  animation-duration: 0.8s;
+  animation-duration: 0.6s;
   animation-timing-function: ease-out;
 }
 
@@ -523,7 +603,7 @@ body {
 }
 .animation-bgOut {
   animation-name: backgroundOut;
-  animation-duration: 0.8s;
+  animation-duration: 0.6s;
   animation-timing-function: ease-out;
 }
 

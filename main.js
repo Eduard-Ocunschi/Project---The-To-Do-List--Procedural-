@@ -7,6 +7,9 @@ const saveBtnModal = document.querySelector(".modal-btn-save");
 //Modal
 const modalContainer = document.querySelector(".modal-container");
 const modalOverlay = document.querySelector(".modal-overlay");
+//Dinamic Card Modal
+const dinCardModal = document.querySelector(".dinamic-card-modal");
+const cardModalOverlay = document.querySelector(".card-modal-overlay");
 // Form Inputs
 const formTitle = document.querySelector(".inp-title");
 const formTextarea = document.querySelector(".inp-textarea");
@@ -101,7 +104,6 @@ window.onload = () => {
     const task = getTaskDataFromForm();
     const newList = [...tasksList, task];
     setTasksList(newList);
-    console.log(taskList);
   });
 
   // BUILDING THE TASK CARD
@@ -150,6 +152,93 @@ window.onload = () => {
 
     cardFooter.append(statusDropDown, deleteBtn);
     container.append(title, description, timeStamp, cardFooter);
+
+    container.addEventListener("click", (ev) => {
+      switch (ev.target.className) {
+        case "card-title":
+        case "card-description":
+        case "card-timestamp":
+        case "card-container":
+        case "card-footer":
+          const cardModalTitle = document.createElement("div");
+          cardModalTitle.className = "card-modal-title";
+          cardModalTitle.innerText = taskObj.title;
+          const cardModalDescription = document.createElement("div");
+          cardModalDescription.className = "card-modal-description";
+          cardModalDescription.innerText = taskObj.description;
+
+          const cardModalTimeStamp = document.createElement("div");
+          cardModalTimeStamp.className = "card-modal-timestamp";
+          cardModalTimeStamp.innerText = taskObj.timestamp;
+
+          const cardModalBtn = document.createElement("button");
+          cardModalBtn.classList = "btn card-modal-btn";
+          cardModalBtn.innerText = "Cancel";
+          const cardModal = document.createElement("div");
+          cardModal.className = "card-modal-container";
+          cardModal.classList.add("animationModal-moveIn");
+          cardModal.append(
+            cardModalTitle,
+            cardModalDescription,
+            cardModalTimeStamp,
+            cardModalBtn
+          );
+          dinCardModal.append(cardModal);
+          cardModalOverlay.classList.remove("hidden");
+          cardModalOverlay.classList.add("animation-bgIn");
+
+          setTimeout(() => {
+            modalOverlay.classList.remove("animation-bgIn");
+            cardModal.classList.remove("animationModal-moveIn");
+          }, 601);
+
+          cardModalBtn.addEventListener("click", () => {
+            setTimeout(() => {
+              cardModal.classList.add("animation-moveOut");
+              cardModalOverlay.classList.add("animation-bgOut");
+            }, 180);
+            setTimeout(() => {
+              dinCardModal.innerHTML = "";
+              cardModal.classList.remove("animation-moveOut");
+              cardModalOverlay.classList.remove("animation-bgOut");
+              cardModalOverlay.classList.add("hidden");
+            }, 601);
+          });
+
+          cardModalOverlay.addEventListener("click", () => {
+            cardModal.classList.add("animation-moveOut");
+            cardModalOverlay.classList.add("animation-bgOut");
+
+            setTimeout(() => {
+              dinCardModal.innerHTML = "";
+              cardModalOverlay.classList.remove("animation-bgOut");
+              cardModal.classList.remove("animation-moveOut");
+              cardModalOverlay.classList.add("hidden");
+            }, 601);
+          });
+
+          document.addEventListener("keydown", function (btn) {
+            if (
+              btn.key === "Escape" &&
+              !cardModalOverlay.classList.contains("hidden")
+            ) {
+              cardModal.classList.add("animation-moveOut");
+              cardModalOverlay.classList.add("animation-bgOut");
+
+              setTimeout(() => {
+                dinCardModal.innerHTML = "";
+                cardModalOverlay.classList.remove("animation-bgOut");
+                cardModal.classList.remove("animation-moveOut");
+                cardModalOverlay.classList.add("hidden");
+              }, 601);
+            }
+          });
+
+          console.log(cardModalTitle);
+          console.log(container);
+          break;
+      }
+    });
     return container;
   };
 
@@ -161,6 +250,7 @@ window.onload = () => {
 
     tasksList.forEach((task) => {
       const card = buildCard(task);
+
       switch (task.status) {
         case taskStates[0]:
           todoColumn.append(card);
@@ -174,4 +264,6 @@ window.onload = () => {
       }
     });
   };
+
+  // ---------- Card Description Modal ---------
 };

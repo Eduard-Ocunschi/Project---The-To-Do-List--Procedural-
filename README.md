@@ -50,9 +50,3 @@ If you have any ideas or improvements, feel free to open an issue or submit a pu
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
-
-Enjoy using **The To Do List**! Let's stay organized and keep learning JavaScript! 😊
-
---- 
-
-Feel free to customize it further if needed!
